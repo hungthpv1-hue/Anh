@@ -3,6 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Flowers</title>
   <link rel="stylesheet" href="./flowerCode.css">
   <style>
@@ -90,6 +91,53 @@
     body.welcome-accepted #welcome-modal {
       display: none;
     }
+
+    /* Responsive Design cho Welcome Modal */
+    @media (max-width: 768px) {
+      .welcome-content {
+        padding: 40px 40px;
+        border-radius: 16px;
+      }
+
+      .welcome-content h2 {
+        font-size: 1.8em;
+        margin-bottom: 15px;
+      }
+
+      .welcome-content p {
+        font-size: 1em;
+        margin: 12px 0;
+      }
+
+      .welcome-btn {
+        padding: 12px 40px;
+        font-size: 1em;
+        margin-top: 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .welcome-content {
+        padding: 30px 25px;
+        border-radius: 12px;
+      }
+
+      .welcome-content h2 {
+        font-size: 1.4em;
+        margin-bottom: 10px;
+      }
+
+      .welcome-content p {
+        font-size: 0.9em;
+        margin: 10px 0;
+      }
+
+      .welcome-btn {
+        padding: 10px 30px;
+        font-size: 0.95em;
+        margin-top: 15px;
+      }
+    }
   </style>
 
 </head>
@@ -103,7 +151,7 @@
       </div>
     </div>
 
-    <h1>8/3 VUI VẺ</h1>
+    <h1>Hi Iya</h1>
     <div class="night"></div>
     <div class="flowers">
       <div class="flower flower--1">
@@ -423,6 +471,5 @@
       audio.play().catch(err => console.log('Error playing audio:', err));
     }
   </script>
-
 
 </html>
