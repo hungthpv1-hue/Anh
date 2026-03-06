@@ -266,10 +266,16 @@
     }
 
     /* Video Modal Content */
+    #gift-video-container {
+      width: 100%;
+      height: 400px;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
     #gift-video {
       width: 100%;
-      height: auto;
-      border-radius: 12px;
+      height: 100%;
     }
 
     #btn-music {
@@ -363,14 +369,19 @@
     </div>
   </div>
 
-  <!-- Modal Video -->
+  <!-- Modal Video - GOOGLE DRIVE -->
   <div class="modal-overlay" id="video-overlay">
     <div class="modal" id="video-modal">
       <button class="modal-close" id="video-close">&times;</button>
       <div class="modal-title">🎬 Video </div>
-      <video id="gift-video" controls>
-        <source src="YOUR_VIDEO_LINK.mp4" type="video/mp4">
-      </video>
+      <!-- Google Drive Embed - Thay YOUR_FILE_ID bằng ID thực tế -->
+      <div id="gift-video-container">
+        <iframe id="gift-video"
+          src="https://drive.google.com/file/d/1t7VtEQMbwDH5-Cd5R6bocSPGSlg1at_j/preview"
+          allow="autoplay"
+          allowfullscreen>
+        </iframe>
+      </div>
     </div>
   </div>
 
@@ -423,7 +434,7 @@
       {
         id: 1,
         title: "Mặt mộc",
-        cover: "https://raw.githubusercontent.com/hungthpv1-hue/Anh/main/pretty.jpg",
+        cover: "https://raw.githubusercontent.com/hungthpv1-hue/Anh/main/mặt mộc.jpg",
         src: "https://github.com/hungthpv1-hue/New/raw/refs/heads/main/M%E1%BA%B6T%20M%E1%BB%98C.mp3"
       },
       {
@@ -492,22 +503,16 @@
     // ===== VIDEO MODAL =====
     const videoOverlay = document.getElementById('video-overlay');
     const videoClose = document.getElementById('video-close');
-    const giftVideo = document.getElementById('gift-video');
 
     function openVideoModal() {
       videoOverlay.classList.add('active');
       if (backgroundAudio && !backgroundAudio.paused) {
         backgroundAudio.pause();
       }
-      setTimeout(() => {
-        giftVideo.play();
-      }, 500);
     }
 
     videoClose.addEventListener('click', () => {
       videoOverlay.classList.remove('active');
-      giftVideo.pause();
-      giftVideo.currentTime = 0;
       if (backgroundAudio && isPlaying) {
         backgroundAudio.play();
       }
@@ -516,15 +521,13 @@
     videoOverlay.addEventListener('click', (event) => {
       if (event.target === videoOverlay) {
         videoOverlay.classList.remove('active');
-        giftVideo.pause();
-        giftVideo.currentTime = 0;
         if (backgroundAudio && isPlaying) {
           backgroundAudio.play();
         }
       }
     });
 
-    // ===== GIFT MODAL - CHUYỂN ĐI THAY VÌ HIỂN THỊ ALERT =====
+    // ===== GIFT MODAL - CHUYỂN ĐI =====
     function openGiftModal() {
       window.location.href = 'https://hungthpv1-hue.github.io/Anh/flowerCode.html';
     }
