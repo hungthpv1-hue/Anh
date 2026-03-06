@@ -2,8 +2,13 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nơi nhận quà</title>
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     html, body {
       height: 100%;
       margin: 0;
@@ -13,6 +18,7 @@
       transition: background 3s linear;
       overflow: hidden;
     }
+
     #background {
       position: fixed;
       top: 0; left: 0; width: 100vw; height: 100vh;
@@ -31,6 +37,8 @@
       align-items: center;
       gap: 20px;
       z-index: 2;
+      padding: 20px;
+      max-width: 100%;
     }
 
     .action-btn {
@@ -46,6 +54,10 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
       cursor: pointer;
       transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
     }
 
     .action-btn:hover {
@@ -65,7 +77,9 @@
       align-items: center;
       justify-content: center;
       z-index: 100;
+      padding: 20px;
     }
+
     #welcome-content {
       background: #fffbe6;
       padding: 36px 42px;
@@ -75,7 +89,10 @@
       color: #c93f4b;
       text-align: center;
       font-weight: 600;
+      max-width: 500px;
+      width: 100%;
     }
+
     #close-welcome {
       margin-top: 18px;
       padding: 8px 18px;
@@ -87,6 +104,12 @@
       font-size: 1em;
       cursor: pointer;
       box-shadow: 0 2px 10px rgba(0,0,0,.05);
+      transition: all 0.3s ease;
+    }
+
+    #close-welcome:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,.1);
     }
 
     /* Modal Styles */
@@ -99,17 +122,21 @@
       align-items: center;
       justify-content: center;
       z-index: 120;
+      padding: 20px;
+      overflow-y: auto;
     }
+
     .modal-overlay.active {
       display: flex;
     }
+
     .modal {
       background: #ffffff;
       border-radius: 20px;
       border: 2px solid rgb(255, 255, 255);
       padding: 24px 28px;
       max-width: 400px;
-      width: 80vw;
+      width: 100%;
       opacity: 0.93;
       box-shadow:
         0 18px 45px rgba(10, 5, 5, 0.25),
@@ -119,12 +146,14 @@
       max-height: 80vh;
       overflow-y: auto;
     }
+
     .modal-title {
       font-size: 20px;
       font-weight: 700;
       margin-bottom: 8px;
       color: #55a7dd;
     }
+
     .modal-close {
       position: absolute;
       top: 10px;
@@ -134,6 +163,11 @@
       font-size: 20px;
       cursor: pointer;
       color: #6b7280;
+      transition: all 0.3s ease;
+    }
+
+    .modal-close:hover {
+      color: #1f2937;
     }
 
     .music-player {
@@ -142,12 +176,14 @@
       gap: 12px;
       margin-top: 8px;
     }
+
     .music-main {
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 12px;
     }
+
     .music-main-cover {
       width: 130px;
       height: 130px;
@@ -156,6 +192,7 @@
       box-shadow: 0 10px 24px rgba(15, 23, 42, 0.15);
       margin-bottom: 10px;
     }
+
     .music-main-title {
       font-size: 17px;
       font-weight: 700;
@@ -163,6 +200,7 @@
       text-align: center;
       margin-bottom: 10px;
     }
+
     .music-main-controls {
       display: flex;
       align-items: center;
@@ -170,6 +208,7 @@
       gap: 9px;
       margin-top: 4px;
     }
+
     .music-main-btn {
       border: none;
       border-radius: 999px;
@@ -189,6 +228,7 @@
         box-shadow 0.15s ease,
         background 0.15s ease;
     }
+
     .music-main-btn.secondary {
       background: transparent;
       color: #729ad6;
@@ -198,10 +238,12 @@
       box-shadow: none;
       font-size: 17px;
     }
+
     .music-main-btn:hover {
       transform: translateY(-2px);
       box-shadow: 0 8px 18px rgba(15, 23, 42, 0.25);
     }
+
     .music-main-range {
       width: 100%;
       margin-top: 6px;
@@ -213,6 +255,7 @@
       outline: none;
       cursor: pointer;
     }
+
     .music-time-row {
       display: flex;
       align-items: center;
@@ -222,12 +265,14 @@
       color: #6291cf;
       margin-top: 4px;
     }
+
     .music-list {
       display: flex;
       flex-direction: column;
       gap: 8px;
       margin-top: 4px;
     }
+
     .music-item {
       display: flex;
       align-items: center;
@@ -241,16 +286,20 @@
         transform 0.15s ease;
       font-size:14px;
     }
+
     .music-item:hover {
       background: #eef2ff;
       transform: translateY(-1px);
     }
+
     .music-item-cover {
       width: 36px;
       height: 36px;
       border-radius: 10px;
       object-fit: cover;
+      flex-shrink: 0;
     }
+
     .music-item-title {
       font-size: 14px;
       font-weight: 600;
@@ -268,7 +317,7 @@
     /* Video Modal Content */
     #gift-video-container {
       width: 100%;
-      height: 400px;
+      aspect-ratio: 16 / 20;
       border-radius: 12px;
       overflow: hidden;
     }
@@ -295,6 +344,7 @@
     #btn-music:hover {
       background: #ffffffff;
       box-shadow: 0 4px 12px rgba(0,0,0,.1);
+      transform: translateY(-2px);
     }
 
     .falling {
@@ -307,18 +357,199 @@
       z-index: 0;
       animation: fall linear forwards;
     }
+
     @keyframes fall {
       to {
         transform: translateY(110vh);
       }
     }
 
-    @media (max-width: 640px) {
-      .music-main-cover {width:68vw;height:68vw;}
+    /* Responsive Design */
+    @media (max-width: 1024px) {
       .action-btn {
-        width: 80px;
-        height: 45px;
+        width: 200px;
+        height: 100px;
+        font-size: 1.15em;
+      }
+
+      #button-group {
+        gap: 15px;
+      }
+
+      .modal {
+        max-width: 90%;
+        padding: 20px 24px;
+      }
+
+      .modal-title {
+        font-size: 18px;
+      }
+
+      #welcome-content {
+        font-size: 1.2em;
+        padding: 30px 35px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .action-btn {
+        width: 160px;
+        height: 80px;
         font-size: 0.95em;
+        padding: 6px 10px;
+      }
+
+      #button-group {
+        gap: 12px;
+        padding: 15px;
+      }
+
+      #btn-music {
+        font-size: 0.95em;
+        padding: 6px 20px;
+        top: 15px;
+        left: 15px;
+      }
+
+      .modal {
+        max-width: 85%;
+        padding: 18px 22px;
+      }
+
+      .modal-title {
+        font-size: 16px;
+        margin-bottom: 6px;
+      }
+
+      .music-main-cover {
+        width: 100px;
+        height: 100px;
+        margin-bottom: 8px;
+      }
+
+      .music-main-title {
+        font-size: 15px;
+        margin-bottom: 8px;
+      }
+
+      .music-main-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 18px;
+      }
+
+      .music-main-btn.secondary {
+        width: 30px;
+        height: 24px;
+        font-size: 15px;
+      }
+
+      #letter-modal-content {
+        font-size: 1em;
+      }
+
+      #welcome-content {
+        font-size: 1.05em;
+        padding: 25px 30px;
+        border-radius: 16px;
+      }
+
+      #close-welcome {
+        font-size: 0.95em;
+        padding: 6px 15px;
+        margin-top: 12px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .action-btn {
+        width: 140px;
+        height: 70px;
+        font-size: 0.85em;
+      }
+
+      #button-group {
+        gap: 10px;
+        padding: 10px;
+      }
+
+      #btn-music {
+        font-size: 0.85em;
+        padding: 6px 16px;
+        top: 12px;
+        left: 12px;
+      }
+
+      .modal {
+        max-width: 95%;
+        padding: 16px 18px;
+        border-radius: 16px;
+      }
+
+      .modal-title {
+        font-size: 14px;
+      }
+
+      .music-main-cover {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 6px;
+      }
+
+      .music-main-title {
+        font-size: 13px;
+        margin-bottom: 6px;
+      }
+
+      .music-main-controls {
+        gap: 6px;
+      }
+
+      .music-main-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 16px;
+      }
+
+      .music-main-btn.secondary {
+        width: 28px;
+        height: 22px;
+        font-size: 13px;
+      }
+
+      .music-item {
+        padding: 4px 8px;
+        gap: 6px;
+      }
+
+      .music-item-cover {
+        width: 32px;
+        height: 32px;
+      }
+
+      .music-item-title {
+        font-size: 12px;
+      }
+
+      #letter-modal-content {
+        font-size: 0.95em;
+        line-height: 1.5;
+      }
+
+      #welcome-content {
+        font-size: 0.95em;
+        padding: 20px 25px;
+        border-radius: 14px;
+      }
+
+      #close-welcome {
+        font-size: 0.9em;
+        padding: 6px 14px;
+        margin-top: 10px;
+      }
+
+      #gift-video-container {
+        aspect-ratio: 16 / 9;
       }
     }
   </style>
