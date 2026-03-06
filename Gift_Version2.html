@@ -317,14 +317,19 @@
     /* Video Modal Content */
     #gift-video-container {
       width: 100%;
-      aspect-ratio: 10 / 12;
+      height: auto;
       border-radius: 12px;
       overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #000;
     }
 
     #gift-video {
       width: 100%;
-      height: 100%;
+      height: auto;
+      display: block;
     }
 
     #btn-music {
@@ -484,6 +489,8 @@
         max-width: 95%;
         padding: 16px 18px;
         border-radius: 16px;
+        max-height: 85vh;
+        overflow-y: auto;
       }
 
       .modal-title {
@@ -549,10 +556,61 @@
       }
 
       #gift-video-container {
-        aspect-ratio: 9 / 16;
+        max-height: 60vh;
       }
     }
-  </style>
+  
+/* ===== MOBILE VIDEO RATIO FIX ===== */
+#video-modal{
+  width:95vw;
+  max-width:900px;
+}
+
+#gift-video-container{
+  width:100%;
+  height:70vh;
+  max-height:80vh;
+  background:#000;
+  border-radius:12px;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+#gift-video{
+  width:100%;
+  height:100%;
+  border:0;
+}
+
+/* Mobile */
+@media (max-width:768px){
+  #video-modal{
+    width:96vw;
+    max-width:96vw;
+    padding:14px;
+  }
+
+  #gift-video-container{
+    width:100%;
+    height:75vh;
+  }
+}
+
+@media (max-width:480px){
+  #video-modal{
+    width:98vw;
+    max-width:98vw;
+    padding:12px;
+  }
+
+  #gift-video-container{
+    height:78vh;
+  }
+}
+
+    </style>
 </head>
 <body>
   <div id="background"></div>
@@ -600,18 +658,16 @@
     </div>
   </div>
 
-  <!-- Modal Video - GOOGLE DRIVE -->
+  <!-- Modal Video - FILE TỪ GITHUB -->
   <div class="modal-overlay" id="video-overlay">
     <div class="modal" id="video-modal">
       <button class="modal-close" id="video-close">&times;</button>
       <div class="modal-title">🎬 Video </div>
-      <!-- Google Drive Embed - Thay YOUR_FILE_ID bằng ID thực tế -->
       <div id="gift-video-container">
-        <iframe id="gift-video"
-          src="https://drive.google.com/file/d/1t7VtEQMbwDH5-Cd5R6bocSPGSlg1at_j/preview?quality=1080"
-          allow="autoplay"
-          allowfullscreen>
-        </iframe>
+        <video id="gift-video" controls>
+          <source src="https://github.com/hungthpv1-hue/Anh/raw/refs/heads/main/lv_7576191482378325301_20260306211739%5B1%5D.mp4" type="video/mp4">
+          Trình duyệt của bạn không hỗ trợ video
+        </video>
       </div>
     </div>
   </div>
@@ -734,6 +790,7 @@
     // ===== VIDEO MODAL =====
     const videoOverlay = document.getElementById('video-overlay');
     const videoClose = document.getElementById('video-close');
+    const giftVideo = document.getElementById('gift-video');
 
     function openVideoModal() {
       videoOverlay.classList.add('active');
@@ -744,6 +801,7 @@
 
     videoClose.addEventListener('click', () => {
       videoOverlay.classList.remove('active');
+      giftVideo.pause();
       if (backgroundAudio && isPlaying) {
         backgroundAudio.play();
       }
@@ -752,6 +810,7 @@
     videoOverlay.addEventListener('click', (event) => {
       if (event.target === videoOverlay) {
         videoOverlay.classList.remove('active');
+        giftVideo.pause();
         if (backgroundAudio && isPlaying) {
           backgroundAudio.play();
         }
