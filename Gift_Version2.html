@@ -35,19 +35,19 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 20px;
+      gap: 50px;
       z-index: 2;
       padding: 20px;
       max-width: 100%;
     }
 
     .action-btn {
-      width: 250px;
-      height: 125px;
-      font-size: 1.35em;
+      width: 750px;
+      height: 375px;
+      font-size: 4.05em;
       background: rgba(255, 255, 255, 0.7);
       border-radius: 12px;
-      padding: 8px 12px;
+      padding: 24px 36px;
       border: 1px solid #f7c8de;
       color: #5f319e;
       font-weight: bold;
@@ -370,15 +370,26 @@
     }
 
     /* Responsive Design */
+    @media (max-width: 1600px) {
+      .action-btn {
+        width: 600px;
+        height: 300px;
+        font-size: 3.24em;
+      }
+      #button-group {
+        gap: 40px;
+      }
+    }
+
     @media (max-width: 1024px) {
       .action-btn {
-        width: 200px;
-        height: 100px;
-        font-size: 1.15em;
+        width: 400px;
+        height: 200px;
+        font-size: 2.16em;
       }
 
       #button-group {
-        gap: 15px;
+        gap: 30px;
       }
 
       .modal {
@@ -398,14 +409,14 @@
 
     @media (max-width: 768px) {
       .action-btn {
-        width: 160px;
-        height: 80px;
-        font-size: 0.95em;
-        padding: 6px 10px;
+        width: 320px;
+        height: 160px;
+        font-size: 1.9em;
+        padding: 12px 20px;
       }
 
       #button-group {
-        gap: 12px;
+        gap: 25px;
         padding: 15px;
       }
 
@@ -468,13 +479,14 @@
 
     @media (max-width: 480px) {
       .action-btn {
-        width: 140px;
-        height: 70px;
-        font-size: 0.85em;
+        width: 280px;
+        height: 140px;
+        font-size: 1.7em;
+        padding: 12px 16px;
       }
 
       #button-group {
-        gap: 10px;
+        gap: 20px;
         padding: 10px;
       }
 
@@ -560,55 +572,55 @@
       }
     }
   
-/* ===== MOBILE VIDEO RATIO FIX ===== */
-#video-modal{
-  width:95vw;
-  max-width:900px;
-}
+    /* ===== MOBILE VIDEO RATIO FIX ===== */
+    #video-modal{
+      width:95vw;
+      max-width:900px;
+    }
 
-#gift-video-container{
-  width:100%;
-  height:70vh;
-  max-height:80vh;
-  background:#000;
-  border-radius:12px;
-  overflow:hidden;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
+    #gift-video-container{
+      width:100%;
+      height:70vh;
+      max-height:80vh;
+      background:#000;
+      border-radius:12px;
+      overflow:hidden;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
 
-#gift-video{
-  width:100%;
-  height:100%;
-  border:0;
-}
+    #gift-video{
+      width:100%;
+      height:100%;
+      border:0;
+    }
 
-/* Mobile */
-@media (max-width:768px){
-  #video-modal{
-    width:96vw;
-    max-width:96vw;
-    padding:14px;
-  }
+    /* Mobile */
+    @media (max-width:768px){
+      #video-modal{
+        width:96vw;
+        max-width:96vw;
+        padding:14px;
+      }
 
-  #gift-video-container{
-    width:100%;
-    height:75vh;
-  }
-}
+      #gift-video-container{
+        width:100%;
+        height:75vh;
+      }
+    }
 
-@media (max-width:480px){
-  #video-modal{
-    width:98vw;
-    max-width:98vw;
-    padding:12px;
-  }
+    @media (max-width:480px){
+      #video-modal{
+        width:98vw;
+        max-width:98vw;
+        padding:12px;
+      }
 
-  #gift-video-container{
-    height:78vh;
-  }
-}
+      #gift-video-container{
+        height:78vh;
+      }
+    }
 
     </style>
 </head>
